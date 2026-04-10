@@ -8,12 +8,13 @@ import {
   FlatList,
 } from "react-native";
 import Button from "../components/Button";
+import CheckoutModal from "../components/CheckoutModal";
 import colors from "../styles/colors";
 import { cartItems as initialCart } from "../data/data";
 
-export default function CartScreen() {
+export default function CartScreen({ navigation }) {
   const [items, setItems] = useState(initialCart);
-
+  const [showCheckout, setShowCheckout] = React.useState(false);
   const increaseQty = (id) => {
     setItems((prev) =>
       prev.map((item) =>
@@ -71,7 +72,9 @@ export default function CartScreen() {
               style={styles.qtyBtn}
               onPress={() => increaseQty(item.id)}
             >
-              <Text style={[styles.qtyBtnText, { color: colors.primary }]}>+</Text>
+              <Text style={[styles.qtyBtnText, { color: colors.primary }]}>
+                +
+              </Text>
             </TouchableOpacity>
           </View>
 
@@ -94,10 +97,19 @@ export default function CartScreen() {
         ListFooterComponent={
           <Button
             title={`Go to Checkout        $${total.toFixed(2)}`}
-            onPress={() => {}}
+            onPress={() => setShowCheckout(true)}
             style={styles.checkoutButton}
           />
         }
+      />
+      <CheckoutModal
+        visible={showCheckout}
+        onClose={() => setShowCheckout(false)}
+        navigation={navigation}
+        onPlaceOrder={() => {
+          setShowCheckout(false);
+          navigation.navigate("OrderAccepted");
+        }}
       />
     </View>
   );

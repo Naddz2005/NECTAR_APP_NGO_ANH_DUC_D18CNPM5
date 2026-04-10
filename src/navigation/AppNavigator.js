@@ -19,6 +19,8 @@ import SearchScreen from "../screens/SearchScreen";
 import FilterScreen from "../screens/FilterScreen";
 import CartScreen from "../screens/CartScreen";
 import FavouriteScreen from "../screens/FavouriteScreen";
+import AccountScreen from "../screens/AccountScreen";
+import OrderAcceptedScreen from "../screens/OrderAcceptedScreen";
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
@@ -39,15 +41,18 @@ export default function AppNavigator() {
         <Stack.Screen name="SelectLocation" component={SelectLocationScreen} />
         <Stack.Screen name="LogIn" component={LogInScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
-        <Stack.Screen name="Home" component={HomeScreen}  />
         <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
         <Stack.Screen name="Explore" component={ExploreScreen} />
-        <Stack.Screen name="CategoryProducts" component={CategoryProductsScreen} />
+        <Stack.Screen
+          name="CategoryProducts"
+          component={CategoryProductsScreen}
+        />
         <Stack.Screen name="MainTabs" component={MainTabs} />
         <Stack.Screen name="Search" component={SearchScreen} />
         <Stack.Screen name="Filter" component={FilterScreen} />
         <Stack.Screen name="Cart" component={CartScreen} />
         <Stack.Screen name="Favourite" component={FavouriteScreen} />
+        <Stack.Screen name="OrderAccepted" component={OrderAcceptedScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

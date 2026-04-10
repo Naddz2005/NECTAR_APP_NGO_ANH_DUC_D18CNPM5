@@ -8,7 +8,7 @@ import SearchScreen from "../screens/SearchScreen";
 import CartScreen from "../screens/CartScreen";
 import FavouriteScreen from "../screens/FavouriteScreen";
 import ExploreScreen from "../screens/ExploreScreen";
-
+import AccountScreen from "../screens/AccountScreen";
 const Tab = createBottomTabNavigator();
 
 function TabIcon({ icon, label, focused }) {
@@ -76,7 +76,7 @@ export default function MainTabs() {
 
       <Tab.Screen
         name="AccountTab"
-        component={ExploreScreen}
+        component={AccountScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <TabIcon icon="◔" label="Account" focused={focused} />
