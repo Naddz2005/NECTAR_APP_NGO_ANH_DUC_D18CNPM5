@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -11,8 +11,12 @@ import Button from "../components/Button";
 import colors from "../styles/colors";
 import { products } from "../data/data";
 
-export default function FavouriteScreen() {
+import OrderFailedModal from "../components/OrderFailedModal";
+
+export default function FavouriteScreen({ navigation }) {
   const favouriteItems = products.filter((item) => item.isFavourite);
+
+  const [showFail, setShowFail] = useState(false);
 
   const renderItem = ({ item }) => (
     <View style={styles.itemWrap}>
@@ -43,10 +47,16 @@ export default function FavouriteScreen() {
         ListFooterComponent={
           <Button
             title="Add All To Cart"
-            onPress={() => {}}
+            onPress={() => setShowFail(true)} // 👈 bấm là hiện modal
             style={styles.button}
           />
         }
+      />
+      <OrderFailedModal
+        visible={showFail}
+        onClose={() => setShowFail(false)}
+        navigation={navigation}
+        onRetry={() => setShowFail(false)}
       />
     </View>
   );
